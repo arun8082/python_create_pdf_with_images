@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="icon" href="static/images/eci_logo.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/css/design.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="static/images/eci_logo.png" id="icon" alt="User Icon" style="height: 200px;"/>
+        </div>
+        <!-- Login Form -->
+        <form action="login" method="post">
+            {% if errors != None %}
+                <label class="alert-danger">{{errors}}</label>
+            {% endif %}
+            {% if request.args["success"] != None and request.args["success"] != "" %}
+                <label class="alert-success">{{request.args["success"]}}</label>
+            {% endif %}
+            {% if request.args["errors"] != None and request.args["errors"] != "" %}
+                <label class="alert-danger">{{request.args["errors"]}}</label>
+            {% endif %}
+            <input type="text" id="login" class="fadeIn second" name="username" placeholder="User Name">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+            <input type="submit" class="fadeIn fourth" value="Log In">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <!--a class="underlineHover" href="#">Forgot Password?</a-->
+            Developed By CDAC,Mumbai
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

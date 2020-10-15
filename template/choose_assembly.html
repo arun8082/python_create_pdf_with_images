@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose Assembly</title>
+    <link rel="icon" href="static/images/eci_logo.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/css/design.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <form action="choose_assembly" method="post">
+        <label class="alert-danger">{{errors}}</label>
+        <select class="form-control form-control-xs selectpicker" name="assembly" data-size="7" data-live-search="true"
+                data-title="Select Assembly" id="assembly" data-width="100%">
+            <option value="" selected>Assembly Name</option>
+            <option value="S05_AC_25">S05_AC_25</option>
+            <option value="S22_AC_27">S22_AC_27</option>
+            <option value="S14_AC_48">S14_AC_48</option>
+            <option value="S24_AC_55">S24_AC_55</option>
+        </select>
+        <br/>
+        <input type="submit" value="Choose" class="btn btn-success"/>
+    </form>
+</div>
+</body>
+</html>
