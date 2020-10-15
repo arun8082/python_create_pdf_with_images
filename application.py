@@ -37,18 +37,20 @@ def view_report():
     try:
         username = session["username"]
         choosed_assembly = session["assembly"]
+        type=session["type"]
     except KeyError:
         error = "Unauthorized access. Try to login"
         return redirect(url_for("login", errors=error))
 
     if username != None and username != "":
+        
         page, per_page, offset = get_page_args(page_parameter='page',per_page_parameter='per_page')
-        data = sf.get_pagination_data(choosed_assembly,offset=offset, per_page=per_page)
+        data = sf.get_pagination_data(choosed_assembly,type,offset=offset, per_page=per_page)
         pagination_data = data[0]
         total = data[1]
-
-        pagination = Pagination(page=page, total=len(sf.report_data(choosed_assembly)),record_name='data',per_page_parameter="per_page",css_framework='bootstrap4')
-        return render_template("myreport.html",data=pagination_data,page=page,per_page=per_page,pagination=pagination)
+        pagination = Pagination(page=page, total=len(sf.report_data(choosed_assembly,type)),record_name='data',per_page_parameter="per_page",css_framework='bootstrap4')
+        return render_template("myreport.html",data=pagination_data,page=page,
+        per_page=per_page,pagination=pagination,type=type,assembly=choosed_assembly)
 
 @app.route("/choose_assembly", methods=["GET"])
 def choose_assembly_get():
@@ -68,6 +70,7 @@ def choose_assembly():
         choosed_assembly = request.form["assembly"]
         if len(choosed_assembly) and len(choosed_assembly) != 0 and choosed_assembly != "":
             session["assembly"] = choosed_assembly
+            session["type"]=request.form["type"]
         else:
             error="Please select any assembly"
             return render_template("choose_assembly.html",errors=error)

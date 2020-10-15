@@ -12,10 +12,17 @@
 </head>
 <body>
 <div class="container">
+    <span>
+        <label><b>Assembly Name: </b>{{assembly}}</label>
+        <label style="margin-left: 50px;"><b>Image Type: </b>{{type}}</label>
+        <label style="margin-left: 50px;"><b><a href="/choose_assembly">Back</a></b></label>
+        <label style="float: right;"><b><a href="/logout">Logout</a></b></label>
+    </span>
+    <hr style="border-bottom: 1px;"/>
     <button type="button" onclick="printJS({ printable: 'data_table', type: 'html' })">Print Form with Header</button>
-    <label><a href="/logout">Logout</a></label>
+    
     <div class="table-responsive">
-    <table id="data_table" class="table table-hover display" style="border-collapse:collapse" border="1px">
+    <table id="data_table" class=" display" style="border-collapse:collapse" border="1px">
         <thead>
             <tr style="background:grey">
                 <td></td>
