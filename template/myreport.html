@@ -19,9 +19,10 @@
         <label style="float: right;"><b><a href="/logout">Logout</a></b></label>
     </span>
     <hr style="border-bottom: 1px;"/>
-    <button type="button" onclick="printJS({ printable: 'data_table', type: 'html' })">Print Form with Header</button>
+    <button type="button" onclick="printJS({ printable: 'data_table', type: 'html' })">Print<img src="static/images/print.png" style="padding: 3px;height: 29px;margin-left: 4px;"/></button>
     
     <div class="table-responsive">
+        {{ pagination.info }}
     <table id="data_table" class=" display" style="border-collapse:collapse" border="1px">
         <thead>
             <tr style="background:grey">
@@ -33,7 +34,7 @@
         </thead>
         <tbody>
         {% for cluster in data %}
-        <tr><th colspan="{{4}}" style="background: #efe3e3;">Cluster Id: {{loop.index + (page - 1) * per_page}}</th></tr>
+        <tr><th colspan="{{4}}" style="background: #efe3e3;text-align: center;">Cluster Id: {{loop.index + (page - 1) * per_page}}</th></tr>
             <tr>
                 {% for imageName,base64image in cluster %}
                     {% if (loop.index)%5==0 %}
