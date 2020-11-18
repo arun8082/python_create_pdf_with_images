@@ -1,1 +1,6 @@
-{"base_paths":{"S05_AC_25":"D:/ElectionCommissionIndia/Filtered Data/S05_AC_25","S22_AC_27":"static/images","S14_AC_48":"static/14_48","S24_AC_55":"static/24_55"}}
+{"base_paths":{
+"S05_AC_25":"../data/S05_AC_25/S_05",
+"S22_AC_27":"../data/S22_AC_27/S_22",
+"S14_AC_48":"../data/S14_AC_48/S_14",
+"S24_AC_55":"../data/S24_AC_55/S_24"}
+}

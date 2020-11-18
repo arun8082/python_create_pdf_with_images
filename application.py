@@ -41,7 +41,7 @@ def view_report():
     except KeyError:
         error = "Unauthorized access. Try to login"
         return redirect(url_for("login", errors=error))
-
+    
     if username != None and username != "":
         
         page, per_page, offset = get_page_args(page_parameter='page',per_page_parameter='per_page')
@@ -51,6 +51,7 @@ def view_report():
         pagination = Pagination(page=page, total=len(sf.report_data(choosed_assembly,type)),record_name='data',per_page_parameter="per_page",css_framework='bootstrap4')
         return render_template("myreport.html",data=pagination_data,page=page,
         per_page=per_page,pagination=pagination,type=type,assembly=choosed_assembly)
+        
 
 @app.route("/choose_assembly", methods=["GET"])
 def choose_assembly_get():
@@ -87,4 +88,4 @@ def logout():
     return redirect(url_for("login", success=success))
 
 if __name__ == "__main__":
-    app.run(debug=True,port=9092)
+    app.run(debug=True,port=443,ssl_context='adhoc',host="10.10.48.10")

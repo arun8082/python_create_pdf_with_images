@@ -14,6 +14,7 @@
 <div class="container">
     <form action="choose_assembly" method="post">
         <label class="alert-danger">{{errors}}</label>
+        {%if session["username"] == "admin" %}
         <select class="form-control form-control-xs selectpicker" name="assembly" data-size="7" data-live-search="true"
                 data-title="Select Assembly" id="assembly" data-width="100%" style="width: 50%;">
             <option value="" selected>Assembly Name</option>
@@ -22,11 +23,36 @@
             <option value="S14_AC_48">S14_AC_48</option>
             <option value="S24_AC_55">S24_AC_55</option>
         </select>
+        {% elif session["username"] == "admin_S05" %}
+        <select class="form-control form-control-xs selectpicker" name="assembly" data-size="7" data-live-search="true"
+                data-title="Select Assembly" id="assembly" data-width="100%" style="width: 50%;">
+            <option value="" selected>Assembly Name</option>
+            <option value="S05_AC_25">S05_AC_25</option>
+        </select>
+        {% elif session["username"] == "admin_S14" %}
+        <select class="form-control form-control-xs selectpicker" name="assembly" data-size="7" data-live-search="true"
+                data-title="Select Assembly" id="assembly" data-width="100%" style="width: 50%;">
+            <option value="" selected>Assembly Name</option>
+            <option value="S22_AC_27">S22_AC_27</option>
+        </select>
+        {% elif session["username"] == "admin_S22" %}
+        <select class="form-control form-control-xs selectpicker" name="assembly" data-size="7" data-live-search="true"
+                data-title="Select Assembly" id="assembly" data-width="100%" style="width: 50%;">
+            <option value="" selected>Assembly Name</option>
+            <option value="S14_AC_48">S14_AC_48</option>
+        </select>
+        {% elif session["username"] == "admin_S24" %}
+        <select class="form-control form-control-xs selectpicker" name="assembly" data-size="7" data-live-search="true"
+                data-title="Select Assembly" id="assembly" data-width="100%" style="width: 50%;">
+            <option value="" selected>Assembly Name</option>
+            <option value="S24_AC_55">S24_AC_55</option>
+        </select>
+        {% endif %}
         <br/>
         <select class="form-control form-control-xs selectpicker" name="type" data-size="7" data-live-search="true"
                 data-title="Select Type" id="type" data-width="100%" style="width: 50%;">
             <option value="duplicate_images">Duplicate Images</option>
-            <option value="suspense">Suspense Images</option>
+            <option value="suspect">Suspect Images</option>
         </select>
         <br/>
         <input type="submit" value="Choose" class="btn btn-success"/>
