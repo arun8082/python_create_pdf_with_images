@@ -38,11 +38,50 @@
             <tr>
                 {% for imageName,base64image in cluster %}
                     {% if (loop.index)%5==0 %}
-                        </tr><tr><td style="width:15%"><img src="data:image/jpg;base64,{{base64image}}" style="height:100px;width:100px;margin:5px"/><br/>{{imageName}}</td>
+                        </tr><tr><td style="width:30%">
+                            <img src="data:image/jpg;base64,{{base64image}}" style="height:100px;width:100px;margin:5px"/><br/>
+                            {% if isinstance(imageName, tuple) %}
+                            <label ><b>ST Code:</b>{{imageName[0]}}</label><br/>
+                            <label ><b>AC No:</b>{{imageName[1]}}</label><br/>
+                            <label ><b>Part No:</b>{{imageName[2]}}</label><br/>
+                            <label ><b>SLNOINPART No:</b>{{imageName[3]}}</label><br/>
+                            <label ><b>Auto Id:</b>{{imageName[4]}}</label><br/>
+                            <label ><b>Name:</b>{{imageName[5]}}</label><br/>
+                            <label ><b>Age:</b>{{imageName[6]}}</label><br/>
+                            <label ><b>Gender:</b>{{imageName[7]}}</label><br/>
+                            <label ><b>Relative Name:</b>{{imageName[8]}}</label><br/>
+                            <label ><b>Relation:</b>{{imageName[9]}}</label>
+                            {% else %}
+                                {{imageName}}
+                            {% endif %}
+                        </td>
                     {% else %}
-                        <td style="width:15%"><img src="data:image/jpg;base64,{{base64image}}" style="height:100px;width:100px;margin:5px"/><br/>{{imageName}}</td>
+                        <td style="width:30%">
+                            <img src="data:image/jpg;base64,{{base64image}}" style="height:100px;width:100px;margin:5px"/><br/>
+                            {% if isinstance(imageName, tuple) %}
+                            <label ><b>ST Code:</b>{{imageName[0]}}</label><br/>
+                            <label ><b>AC No:</b>{{imageName[1]}}</label><br/>
+                            <label ><b>Part No:</b>{{imageName[2]}}</label><br/>
+                            <label ><b>SLNOINPART No:</b>{{imageName[3]}}</label><br/>
+                            <label ><b>Auto Id:</b>{{imageName[4]}}</label><br/>
+                            <label ><b>Name:</b>{{imageName[5]}}</label><br/>
+                            <label ><b>Age:</b>{{imageName[6]}}</label><br/>
+                            <label ><b>Gender:</b>{{imageName[7]}}</label><br/>
+                            <label ><b>Relative Name:</b>{{imageName[8]}}</label><br/>
+                            <label ><b>Relation:</b>{{imageName[9]}}</label>
+                            {% else %}
+                                {{imageName}}
+                            {% endif %}
+                        </td>
                     {% endif %}
                 {% endfor %}
+                {% if isinstance(cluster[0][0], tuple) %}
+                    {% if cluster[0][0][10] is not none %}
+                    <td>
+                        <label ><b>Name Match:</b>{{cluster[0][0][10]}}</label>
+                    </td>
+                {% endif %}
+                {% endif %}
             </tr>
         {% endfor %}
         </tbody>

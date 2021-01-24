@@ -45,10 +45,10 @@ def view_report():
     if username != None and username != "":
         
         page, per_page, offset = get_page_args(page_parameter='page',per_page_parameter='per_page')
-        data = sf.get_pagination_data(choosed_assembly,type,offset=offset, per_page=per_page)
+        data = sf.get_pagination_data(choosed_assembly,type,offset=offset, per_page=10)
         pagination_data = data[0]
         total = data[1]
-        pagination = Pagination(page=page, total=len(sf.report_data(choosed_assembly,type)),record_name='data',per_page_parameter="per_page",css_framework='bootstrap4')
+        pagination = Pagination(page=page,per_page=10, total=len(sf.report_data(choosed_assembly,type)),record_name='data',per_page_parameter="per_page",css_framework='bootstrap4')
         return render_template("myreport.html",data=pagination_data,page=page,
         per_page=per_page,pagination=pagination,type=type,assembly=choosed_assembly)
         
@@ -88,4 +88,8 @@ def logout():
     return redirect(url_for("login", success=success))
 
 if __name__ == "__main__":
+    app.jinja_env.globals.update(isinstance=isinstance)
+    app.jinja_env.globals.update(type=type)
+    app.jinja_env.globals.update(tuple=tuple)
+    app.jinja_env.globals.update(none=None)
     app.run(debug=True,port=443,ssl_context='adhoc',host="10.10.48.10")
